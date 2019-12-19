@@ -1,0 +1,198 @@
+body {
+    margin-top: 120px;
+}
+
+/* ---------------------------- Breadcrumbs --------------------------- */
+
+.breadcrumbs {
+    position: relative;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.items  {
+    display: flex;
+    flex-direction: row;
+    padding-left: 23px;
+}
+
+.item-Home {
+    color: #a3a3a3;
+    cursor: pointer;
+}
+
+.item-Signup::before {
+    content: " / ";
+    font-weight: bold;  
+}
+
+
+/* ---------------------------- Register-part  -------------------------------------- */
+
+
+/* ------------------------- account-create-container ------------------------------- */
+.account-create-container , .block-already-customer {
+    float: left;
+    width: 50%;
+}
+
+.register-part {
+    margin-top: 6%;
+    margin-left: 8%;
+    margin-right: 8%;
+
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: normal;
+}
+
+.left-column > p {
+    color: #4a4a4a;
+}
+
+.register-part form {
+    display: flex;
+    flex-direction: column;
+}
+
+.register-part form .label {
+    padding: 5px 0;;
+    text-align: left;
+    width: 100%;
+    box-sizing: border-box;
+    float: left;
+}
+
+.register-part form .label::after {
+    content: '*';
+    color: #e02b27;
+    font-size: 1.2rem;
+    margin: 0 0 0 5px;
+}
+
+.register-part form input {
+    width: 65%;
+    height: 30px;
+    float: left;
+}
+
+.register-part  form input[type=text], 
+input[type=password], input[type=email], input[type=tel]{
+    background: #fff;
+    background-clip: padding-box;
+    border: 1px solid #cecece;
+    border-radius: 1px;
+    font-size: 12px;
+    line-height: 1.42857143;
+    padding: 0 9px;
+    vertical-align: baseline;
+    /* width: 10%; */
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+
+.block-content-mobile-version {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin: 30px 0 0 0;
+}
+
+.block-content-mobile-version a {
+    margin-left: 10px;
+    margin-top: 22px;
+    cursor: pointer;
+}
+
+/* ------------------------- block-already-customer ------------------------------- */
+.block-already-customer {
+    line-height: 1.42857143;
+}
+
+.block-already-customer .block-content {
+    float: left;
+    background: #fff;
+    padding: 0px 40px 100px;
+    width: 100%;
+}
+
+.block-already-customer .block-content p {
+    color: #4a4a4a;
+}
+
+.block-already-customer .block-content .actions-toolbar {
+    box-sizing: border-box;
+}
+
+.block-already-customer .block-content .actions-toolbar a ,
+.account-create-container .actions-toolbar a{
+    height: 40px;
+    line-height: 40px;
+    background: #000;
+    border-color: #000;
+    border-radius: 5px;
+    border: 1px solid black;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin: 0;
+    padding: 10px 40px;
+    /* padding: 1% 5vw; */
+    width: auto;
+    
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+    
+}
+
+.account-create-container .actions-toolbar {
+    margin-bottom: 40px;
+}
+
+/* ------------------------- Mobile_version  ------------------------------- */
+
+@media screen and(max-width : 374px) and (min-width : 0px) {
+    .account-create-container .actions-toolbar a {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 770px) {
+    .block-already-customer {
+        display: none;
+    }
+
+    .account-create-container {
+        display: block;
+        width: 100%;
+    }
+
+    .register-part form input {
+        width: 100%;
+    }
+
+    .account-create-container .actions-toolbar {
+        margin-bottom: 0px;
+    }
+
+    .account-create-container .actions-toolbar a {
+        width: inherit;
+    }
+
+    .block-content-mobile-version {
+        margin-top: 20px;
+    }
+
+    .account-create-container .actions-toolbar a {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (min-width: 771px) {
+    .block-content-mobile-version {
+        display: none;
+    }
+}
+

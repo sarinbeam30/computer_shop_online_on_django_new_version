@@ -1,0 +1,180 @@
+{% extends 'web_page/base-layout.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="slideshow-container-advertisement">
+    <div class="mySlides_slideshow_advertisement fade">
+      <img
+        src="{% static "Image/Promotion_image/Promotion_img_1.jpg" %}"
+        style="width:100%; height: 100%;"
+      />
+    </div>
+
+    <div class="mySlides_slideshow_advertisement fade">
+      <img src="{% static "Image/Promotion_image/Promotion_img_2.jpg" %}" style="width:100%" />
+    </div>
+
+    <div class="mySlides_slideshow_advertisement fade">
+      <img src="{% static "Image/Promotion_image/Promotion_img_3.jpg" %}" style="width:100%" />
+    </div>
+
+    <div class="mySlides_slideshow_advertisement fade">
+      <img src="{% static "Image/Promotion_image/Promotion_img_4.jpg" %}" style="width:100%" />
+    </div>
+
+    <a
+      class="prev_slideshow_container_advertisement"
+      onclick="plusSlides_slideshow_container_advertisement(-1, 0)"
+      >&#10094;</a
+    >
+    <a
+      class="next_slideshow_container_advertisement"
+      onclick="plusSlides_slideshow_container_advertisement(1, 0)"
+      >&#10095;</a
+    >
+    
+  </div>
+
+  <div class="banner-container">
+    <div class="owl-item">
+      <a href="#"
+        ><img
+          src="https://www.bnn.in.th/pub/media/tigren/banners/banner-pro-400px-01.jpg"
+      /></a>
+    </div>
+
+    <div class="owl-item">
+      <a href="#"
+        ><img
+          src="https://www.bnn.in.th/pub/media/tigren/banners/banner-pro-400px-02.jpg"
+      /></a>
+    </div>
+    <div class="owl-item">
+      <a href="#"
+        ><img
+          src="https://www.bnn.in.th/pub/media/tigren/banners/banner-pro-400px-03.jpg"
+      /></a>
+    </div>
+
+    <div class="owl-item">
+      <a href="#"
+        ><img
+          src="https://www.bnn.in.th/pub/media/tigren/banners/banner-pro-400px-04.jpg"
+      /></a>
+    </div>
+
+    <div class="owl-item">
+      <a href="#"
+        ><img
+          src="https://www.bnn.in.th/pub/media/tigren/banners/notebook-top20-banner-400px-2.jpg"
+      /></a>
+    </div>
+
+    <div class="owl-item">
+      <a href="#"
+        ><img
+          src="https://www.bnn.in.th/pub/media/tigren/banners/Creditcardpromo_400x187_2.jpg"
+      /></a>
+    </div>
+  </div>
+
+  <h1 id="promotion">
+    <a
+      href="promotion-page.html"
+      style="text-decoration: none; color: black; cursor: pointer;"
+      >Promotion</a
+    >
+  </h1>
+  <div class="line"></div>
+  <br />
+  <div class="container-promotion" style="text-align: center;">
+    <div class="row">
+      <div class="slideshow-container-promotion">
+        <h3 class="promotion-tag">GOLDEN TIME</h3>
+        <div class="slides-promotion fade">
+          <img
+            src="{% static "Image/Notebook_image/Apple/apple-2017.jpg" %}"
+            class="image-promotion"
+            style="width: 80%; display: block;
+            margin-left: auto;
+            margin-right: auto;"
+          />
+        </div>
+        <div class="slides-promotion fade">
+          <img
+            src="{% static "Image/Notebook_image/Apple/apple-2018-retina.jpg" %}"
+            class="image-promotion"
+            style="width: 80%; display: block;
+            margin-left: auto;
+            margin-right: auto;"
+          />
+        </div>
+        <div class="slides-promotion fade">
+          <img
+            src="{% static "Image/Notebook_image/Apple/apple-2018.jpg" %}"
+            class="image-promotion"
+            style="width: 80%; display: block;
+            margin-left: auto;
+            margin-right: auto;"
+          />
+        </div>
+
+        <a class="prev-promotion" onclick="plusSlides_promotion(-1)">&#10094;</a>
+        <a class="next-promotion" onclick="plusSlides_promotion(1)">&#10095;</a>
+        <div class="container-dot">
+          <span class="dot" onclick="currentSlide_promotion(1)"></span>
+          <span class="dot" onclick="currentSlide_promotion(2)"></span>
+          <span class="dot" onclick="currentSlide_promotion(3)"></span>
+        </div>
+      </div>
+
+      <div class="column-right">
+        <img
+          src="{% static "Image/Promotion_image/gaming-notebook-banner.jpg" %}"
+          class="image-promotion"
+        />
+        <img
+          src="{% static "Image/Promotion_image/surface-banner-hl-3.jpg" %}"
+          class="image-promotion"
+        />
+        <img
+          src="{% static "Image/Promotion_image/apple-shop-banner-aug.jpg" %}"
+          class="image-promotion"
+          style="width: 82%;"
+        />
+      </div>
+    </div>
+  </div>
+
+  <h1 id="new-arrival">New Arrival</h1>
+  <div class="new-arrival-container">
+    {% for new_product in all_notebook_product_page %}
+    <div class="card">
+      <div class="owl-item">
+        <a href="{{ new_product.slug }}"
+          ><img
+            src="{{ new_product.product_image.url }}"
+        /></a>
+        <h5 class="brand-product">{{ new_product.brand }}</h5>
+        <a class="product-detail" href="#">
+          <h5>{{ new_product.product_detail }}</h5>
+        </a>
+        
+        <h5 class="price-product">
+          <span class="thai-bath-sign">&#3647;</span>
+          {{ new_product.slug }}
+        </h5>
+
+        <div class="add-to-cart-button">
+          <button><i class="fas fa-shopping-cart" >
+              <span style="margin-left: 10px;">ADD TO CART</span>
+              </i>
+          </button>
+        </div>
+        
+      </div>
+    </div>
+    {% endfor %}  
+  </div>
+{{ block.super }}
+ {% endblock %} 
