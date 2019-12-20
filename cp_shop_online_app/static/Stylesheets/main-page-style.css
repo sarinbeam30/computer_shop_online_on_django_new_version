@@ -59,6 +59,14 @@ h5 {
   color: black;
 }
 
+.page-header  .header.links form.signout-form button.signout-btn {
+  border: none;
+  color: #000;
+  font-size: 15px;
+  padding: 0px 7px 0px 7px;
+  cursor: pointer;
+}
+
 /* header-sticky */
 .header-sticky {
   background-color: whitesmoke;

@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 from django.utils.text import slugify
 
 class All_notebook_product_page(models.Model):
@@ -43,3 +44,6 @@ class All_notebook_product_page(models.Model):
         self.slug = 'products/' + slugify(self.product_detail) + '/'
         # print("TEST" + self.slug)
         super(All_notebook_product_page, self).save(*args, **kwargs)
+
+
+

@@ -21,10 +21,22 @@
   <header class="page-header">
     <div class="panel wrapper">
       <div class="panel header" id="panel-header-hide-menu-on-scroll">
+
+        {% if user.is_authenticated %}
         <ul class="header links">
-          <li><a href="login-page.html">Login</a></li>
-          <li><a href="register-page.html">Register</a></li>
+          <li><a href="#">{{ user.get_username }}</a></li>
+          <!-- SIGNOUT_BUTTON -->
+          <form class="signout-form" method="POST" action="{% url 'cp_shop_online_app:logout_page' %}">
+            {% csrf_token %}
+            <button class="signout-btn">Sign Out</button>
+          </form>
         </ul>
+        {% else %}
+        <ul class="header links">
+          <li><a href="{% url 'cp_shop_online_app:login_page' %}">Login</a></li>
+          <li><a href="{% url 'cp_shop_online_app:register_page' %}">Register</a></li>
+        </ul>
+        {% endif %}
       </div>
 
       <div class="header-sticky" id="header-sticky">

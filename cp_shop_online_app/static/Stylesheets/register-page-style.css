@@ -148,7 +148,57 @@ input[type=password], input[type=email], input[type=tel]{
 }
 
 .account-create-container .actions-toolbar {
+    margin-top: 10px;
     margin-bottom: 40px;
+}
+
+.account-create-container .actions-toolbar a button.create-an-account-button {
+    border: none;
+    color: #fff;
+    background: transparent;
+    font-size: 1.1rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    line-height: 40px;
+    font-weight: 500;
+}
+
+/* ------------------------- Django's user_form  ------------------------------- */
+form .p_form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0;
+    margin-top: 5px;
+}
+
+form .p_form label {
+    padding: 5px 0;
+}
+
+form .p_form label::after {
+    content: '*';
+    color: #e02b27;
+    font-size: medium;
+    margin-left: 4px;
+}
+
+form .p_form input {
+    margin: 0px 0 15px 0;
+}
+
+form .p_form .help_text{
+    font-size: smaller;
+    color: #e02b27;
+    margin-bottom: 20px;
+    max-width: 375px;
+}
+
+form .p_form .error_condition {
+    padding: 10px;
+    border: 1px solid #ff5050;
+    font-size: smaller;
+    max-width: 375px;
+    margin-bottom: 20px;
 }
 
 /* ------------------------- Mobile_version  ------------------------------- */
