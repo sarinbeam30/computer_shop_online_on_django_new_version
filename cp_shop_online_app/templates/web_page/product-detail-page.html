@@ -1,15 +1,17 @@
 {% extends 'web_page/base-layout.html' %}
 {% load staticfiles %}
+{% load humanize %}
 
 {% block content %}
 <link rel="stylesheet" type="text/css" href="{% static 'Stylesheets/product-detail-page-style.css' %}"/>
+
 <breadcrumbs class="breadcrumbs">
   <ul class="items" style="list-style: none;">
     <li class="item-Home">
-      <a href="main.html" title="main" style="text-decoration: none; color: black;">Home</a>
+      <a href="{% url 'cp_shop_online_app:main_page' %}" title="main" style="text-decoration: none; color: black;">Home</a>
     </li>
     <li class="item-Notebook">
-      <a href="all-product-page.html" title="main" style="text-decoration: none; color: black;">Notebook</a>
+      <a href="{% url 'cp_shop_online_app:all_notebook_product_page' %}" title="main" style="text-decoration: none; color: black;">Notebook</a>
     </li>
     <li class="item-product-detail">
       <strong>{{ product.product_detail }}</strong>
@@ -26,7 +28,7 @@
         <!-- <h5 style="text-align: left">DELL Laptop</h5> -->
         <img
           class="product-image"
-          src="{{ product.product_image.url }}"
+          src="{{ product.pic1.url }}"
         />
       </div>
     </div>
@@ -48,7 +50,7 @@
         <br />
         <h2 class="product-price" style="float: left; margin-left: -28px;">
           <span class="thai-bath-sign">&#3647;</span>
-          {{ product.normal_price }}
+          {{ product.normal_price|intcomma }}
         </h2>
         <h4
           class="product-available"
@@ -141,18 +143,21 @@
 
 </div>
 
+
 <h1 id="Recommended">Recommended</h1>
 <hr style="border-width: 0.5px;" />
 <div class="new-arrival-container">
+
+  {% for all_notebook_product_page in all_notebook_product_page %}
   <div class="card">
     <div class="owl-item">
       <a href="#"
         ><img
-          src="Notebook_image/Dell/Dell-11.6-Inspiron-11-3000-Series-Multi-Touch-2-in-1-Notebook.jpg"
+          src="{{ all_notebook_product_page.product_preview_image.url }}"
       /></a>
-      <h5>Dell 11.6 Inspiron-11 3000 Series Multi Touch 2-in-1 Notebook</h5>
+      <h5>{{ all_notebook_product_page.product_detail|truncatechars:35 }}</h5>
       <h5 style="float: left">
-        18,000
+        {{ all_notebook_product_page.normal_price|intcomma }}
       </h5>
       <h5 style="float: right;">
         BATH
@@ -167,129 +172,13 @@
 
     </div>
   </div>
-
-  <div class="card">
-    <div class="owl-item">
-      <a href="#"
-        ><img
-          src="Notebook_image/Dell/Dell-13.3-Inspiron-13-5000-Series-Multi-Touch-2-in-1-Notebook.jpg"
-      /></a>
-      <h5>Dell 13.3 Inspiron-13 5000 Series Multi Touch 2-in-1-Notebook</h5>
-      <h5 style="float: left">
-        40,000
-      </h5>
-      <h5 style="float: right;">
-        BATH
-      </h5>
-      <div class="add-to-cart-button">
-        <button><i class="fas fa-shopping-cart" >
-            <span style="margin-left: 10px;">ADD TO CART</span>
-            </i>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="owl-item">
-      <a href="#"
-        ><img
-          src="Notebook_image/Lenovo/Lenovo-14-IdeaPad-Flex-Pro-Multi-Touch-2-in-1-Laptop-(Platinum).jpg"
-      /></a>
-      <h5>
-        Lenovo 14 IdeaPad Flex Pro Multi Touch 2-in-1 Laptop (Platinum)
-      </h5>
-      <h5 style="float: left">
-        55,000
-      </h5>
-      <h5 style="float: right;">
-        BATH
-      </h5>
-      <div class="add-to-cart-button">
-        <button><i class="fas fa-shopping-cart" >
-            <span style="margin-left: 10px;">ADD TO CART</span>
-            </i>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="owl-item">
-      <a href="#"
-        ><img
-          src="Notebook_image/Microsoft/Microsoft-Surface-Book-2-13.5-Touch-Screen-PixelSense™-2-in-1-Laptop-Intel-Core-i7-16GB-Memory-512GB-SSD- Silver.jpg"
-      /></a>
-      <h5>
-        Microsoft Surface Book 2-13.5 Touch Screen PixelSense™ 2-in-1 Laptop
-      </h5>
-      <h5 style="float: left">
-        75,000
-      </h5>
-      <h5 style="float: right;">
-        BATH
-      </h5>
-      <div class="add-to-cart-button">
-        <button><i class="fas fa-shopping-cart" >
-            <span style="margin-left: 10px;">ADD TO CART</span>
-            </i>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="owl-item">
-      <a href="#"
-        ><img
-          src="Notebook_image/Microsoft/Microsoft-Surface-Pro 6-12.3-Touch-Screen-Intel-Core-i5-8GB-Memory-128GB-Solid-State-Drive-(Latest Model)-Platinum.jpg"
-      /></a>
-      <h5>
-        Microsoft-Surface-Pro 6-12.3 Touch-Screen
-      </h5>
-      <br />
-      <h5 style="float: left">
-        27,500
-      </h5>
-      <h5 style="float: right;">
-        BATH
-      </h5>
-      <div class="add-to-cart-button">
-        <button><i class="fas fa-shopping-cart" >
-            <span style="margin-left: 10px;">ADD TO CART</span>
-            </i>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="owl-item">
-      <a href="#"
-        ><img src="Notebook_image/Dell/Dell-15.6-XPS-15-9570.jpg "
-      /></a>
-      <h5>Dell 15.6 XPS 15 9570</h5>
-      <br />
-      <h5 style="float: left">
-        35,000
-      </h5>
-      <h5 style="float: right;">
-        BATH
-      </h5>
-      <div class="add-to-cart-button">
-        <button><i class="fas fa-shopping-cart" >
-            <span style="margin-left: 10px;">ADD TO CART</span>
-            </i>
-        </button>
-      </div>
-    </div>
-  </div>
+  {% endfor %}
 </div>
 <hr style="border-width: 0.5px;" />
 
 <script 
   type="text/javascript"
-  src="{% static "JavaScript/product-detail-page.js" %}"
+  src="{% static 'JavaScript/product-detail-page.js' %}"
 ></script>
 
 {{ block.super }}

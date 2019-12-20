@@ -3,7 +3,14 @@ from django.utils import timezone
 from django.utils.text import slugify
 
 class All_notebook_product_page(models.Model):
-    product_image = models.ImageField(upload_to='Image/all_notebook_product/',default= 'default.png', blank=True, max_length=500)
+    product_preview_image = models.ImageField(upload_to='Image/all_notebook_product/',default='default.png', blank=False, max_length=500)
+    # PICTURE
+    pic1 = models.ImageField(upload_to='Image/all_notebook_product/full_resol_image/', default='default.png', blank=False, max_length=500)
+    pic2 = models.ImageField(upload_to='Image/all_notebook_product/full_resol_image/', default='default.png', blank=True, max_length=500)
+    pic3 = models.ImageField(upload_to='Image/all_notebook_product/full_resol_image/', default='default.png', blank=True, max_length=500)
+    pic4 = models.ImageField(upload_to='Image/all_notebook_product/full_resol_image/', default='default.png', blank=True, max_length=500)
+
+
     product_detail = models.CharField(max_length=200, default="")
     slug = models.SlugField(unique=True, null=False)
     product_description = models.TextField(max_length=500)
@@ -26,13 +33,11 @@ class All_notebook_product_page(models.Model):
     normal_price = models.IntegerField(default=0)
     save_price = models.IntegerField(default=0)
 
+
     add_time = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.product_detail
-    
-    def snippet(self):
-        return self.product_detail[:60] + '...'
     
     def save(self, *args, **kwargs):
         self.slug = 'products/' + slugify(self.product_detail) + '/'

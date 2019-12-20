@@ -29,7 +29,7 @@
 
       <div class="header-sticky" id="header-sticky">
         <div class="icon-logo-header left">
-          <a href="main.html">
+          <a href="{% url 'cp_shop_online_app:main_page' %}">
             <img
               alt="icon"
               src="{% static 'Image/Icon_image/laptop.png' %}"
@@ -48,9 +48,9 @@
             <p style="margin: 0px;">Category</p>
           </button>
           <div class="category-header-dropdown-content">
-            <a href="all-notebook-product-page.html">Notebook</a>
-            <a href="#">Smartphone</a>
-            <a href="#">Tablet</a>
+            <a href="{% url 'cp_shop_online_app:all_notebook_product_page' %}">Notebook</a>
+            <!-- <a href="#">Smartphone</a>
+            <a href="#">Tablet</a> -->
           </div>
         </div>
 
@@ -233,6 +233,6 @@
   </footer>
   <script
     type="text/javascript"
-    src="{% static "JavaScript/main-page-javascript.js" %}"
+    src="{% static 'JavaScript/main-page-javascript.js' %}"
   ></script>
 </html>

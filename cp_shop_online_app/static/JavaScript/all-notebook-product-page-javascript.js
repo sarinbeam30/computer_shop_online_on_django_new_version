@@ -1,8 +1,8 @@
+
 //----------------------------- Function Hide Menu on Scroll --------------------------------------------
 var prevScrollpos = window.pageYOffset;
 window.onscroll = function() {
   var currentScrollPos = window.pageYOffset;
-  // this.console.log("currentScrollPos : " + currentScrollPos);
   
   if(currentScrollPos === 0){
     document.getElementById("panel-header-hide-menu-on-scroll").style.top = "0";
@@ -15,7 +15,6 @@ window.onscroll = function() {
   }
 
   prevScrollpos = currentScrollPos;
- 
 }
 
 //----------------------------- Function Footer's collapsible --------------------------------------------
@@ -51,7 +50,6 @@ for(collapsible_sidebar_menu_num = 0; collapsible_sidebar_menu_num < collapsible
     }
   })
 }
-
 //----------------------------- Function Sidebar-menu's Range slider --------------------------------------------
 var left_price_slider = document.getElementById("left-price-slider-id");
 var output_left_price_slider = document.getElementById("left-slider-value");
@@ -73,7 +71,3 @@ function closeNav() {
   document.getElementById("filter-button").style.marginLeft = "0";
   document.body.style.backgroundColor = "white";
 }
-
-
-
-
