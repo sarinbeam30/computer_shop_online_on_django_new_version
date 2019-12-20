@@ -11,12 +11,8 @@
     <li class="item-Notebook">
       <a href="all-product-page.html" title="main" style="text-decoration: none; color: black;">Notebook</a>
     </li>
-    <!-- <li class="item-Brand">
-      <a href="all-product-page.html" title="main" style="text-decoration: none; color: black;">Dell</a>
-    </li> -->
-    
     <li class="item-product-detail">
-      <strong>{{ product.brand }}</strong>
+      <strong>{{ product.product_detail }}</strong>
     </li>
   </ul>
 </breadcrumbs>
@@ -30,7 +26,7 @@
         <!-- <h5 style="text-align: left">DELL Laptop</h5> -->
         <img
           class="product-image"
-          src="Notebook_image/Dell/Dell-15.6-Inspiron-15-5000-Series-5584-Multi-Touch-Laptop.jpg"
+          src="{{ product.product_image.url }}"
         />
       </div>
     </div>
@@ -43,15 +39,16 @@
         </h3>
         <hr />
         <h6 style="font-weight: lighter; float: left; color: gray;">
-          DELL
+          {{ product.brand }}
         </h6>
-        <h6 style="font-weight: lighter; float: right; color: gray;">
+        <!-- <h6 style="font-weight: lighter; float: right; color: gray;">
           SKU W26601105WTHW10_3280_BK_W
-        </h6>
+        </h6> -->
         <br />
         <br />
         <h2 class="product-price" style="float: left; margin-left: -28px;">
-          ฿ 30,000
+          <span class="thai-bath-sign">&#3647;</span>
+          {{ product.normal_price }}
         </h2>
         <h4
           class="product-available"
@@ -63,17 +60,7 @@
         <br />
         <br />
         <h5 class="product-detail" style="font-weight: lighter; text-align: left;">
-          Dell Inspiron 22 3280-W26601105WTHW10 AIO คอมพิวเตอร์ All-in-One
-          สเปคคุ้มค่า ราคาไม่เกิน 10,000 บาท ดีไซน์เรียบง่าย
-          เข้ากับทุกสถานที่ทำงาน พร้อมใช้งานได้เลย Dell Inspiron 22 3277 AIO
-          มีหน้าจอ IPS Full HD 21.5 นิ้ว ภาพคมชัด สีสันสวยสมจริง
-          ใช้งานได้สบายตา พร้อมกล้อง Webcam แบบป๊อบอัพ ใช้ CPU Intel Pentium
-          Gold 5405U และ RAM DDR4 4GB ทำงานพื้นฐานได้สบายๆ มีการ์ดจอออนบอร์ด
-          เพียงพอต่อการแต่งภาพเล็กๆ น้อยๆ ได้ PC All-in-One อย่าง Dell
-          Inspiron 22 3277 ยังเหมาะกับการใช้งานเพื่อความบันเทิง
-          ด้วยระบบเสียง Dell's Cinema Sound ให้อรรถรสทางเสียงได้อย่างดี มี
-          Windows 10 ลิขสิทธิ์แท้ บริการ McAfee 15 เดือน พร้อมต่อการใช้งาน
-          มีประกัน Onsite 3 ปี
+          {{ product.product_description }}
         </h5>
 
         Qty:
@@ -103,63 +90,51 @@
     <tbody>
       <tr>
         <th>Screen size</th>
-        <td>15.6 inch</td>
+        <td>{{ product.screen_size }}</td>
       </tr>
       <tr>
         <th>Processor</th>
-        <td>Intel Core i7-9750H</td>
+        <td>{{ product.processor }}</td>
       </tr>
       <tr>
         <th>Processor speed</th>
-        <td>2.6 GHz up to 4.5 GHz (12MB Cache)</td>
+        <td>{{ product.processor_speed }}</td>
       </tr>
       <tr>
         <th>Display</th>
-        <td>FHD (1920x1080) Anti-Glare 120Hz IPS-level</td>
+        <td>{{ product.display }}</td>
       </tr>
       <tr>
         <th>Memory</th>
-        <td>8 GB DDR4 2666MHz</td>
+        <td>{{ product.memory }}</td>
       </tr>
       <tr>
         <th>Storage</th>
-        <td>512 GB SSD</td>
+        <td>{{ product.storage }}</td>
       </tr>
       <tr>
         <th>Graphics</th>
-        <td>NIVIDIA Geforce GTX 1650 (4GB GDDR5)</td>
+        <td>{{ product.graphics }}</td>
       </tr>
       <tr>
         <th>Operating System</th>
-        <td>Windows 10</td>
+        <td>{{ product.operating_system }}</td>
       </tr>
       <tr>
         <th>Camera</th>
-        <td>720P HD</td>
-      </tr>
-      <tr>
-        <th>Opical Drive</th>
-        <td>No</td>
-      </tr>
-      <tr>
-        <th>Connection Ports</th>
-        <td>3x USB 3.1 Type-A (Gen 1)</td>
-      </tr>
-      <tr>
-        <th>Color</th>
-        <td>Black</td>
+        <td>{{ product.camera }}</td>
       </tr>
       <tr>
         <th>Dimensions W x D x H</th>
-        <td>36.0 x 27.5 x 2.58 cm.</td>
+        <td>{{ product.dimension }}</td>
       </tr>
       <tr>
         <th>Weight</th>
-        <td>2.40 kg.</td>
+        <td>{{ product.weight }}</td>
       </tr>
       <tr>
         <th>Warranty</th>
-        <td>2 Years carry in + 1 Year Perfect warranty</td>
+        <td>{{ product.warranty }}</td>
       </tr>
     </tbody>
   </table>

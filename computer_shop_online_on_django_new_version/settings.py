@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'cp_shop_online_app',
+    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [

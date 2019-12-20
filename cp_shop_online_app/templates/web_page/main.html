@@ -156,13 +156,13 @@
             src="{{ new_product.product_image.url }}"
         /></a>
         <h5 class="brand-product">{{ new_product.brand }}</h5>
-        <a class="product-detail" href="#">
+        <a class="product-detail" href="{{ new_product.slug }}">
           <h5>{{ new_product.product_detail }}</h5>
         </a>
         
         <h5 class="price-product">
           <span class="thai-bath-sign">&#3647;</span>
-          {{ new_product.slug }}
+          {{ new_product.normal_price }}
         </h5>
 
         <div class="add-to-cart-button">
