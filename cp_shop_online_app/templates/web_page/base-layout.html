@@ -6,7 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Computer store</title>
-    <link rel="icon" type="image/png" href="{% static 'Image/Icon_image/laptop.png' %}">
+    <link
+      rel="icon"
+      type="image/png"
+      href="{% static 'Image/Icon_image/laptop.png' %}"
+    />
     <link
       rel="stylesheet"
       type="text/css"
@@ -21,12 +25,15 @@
   <header class="page-header">
     <div class="panel wrapper">
       <div class="panel header" id="panel-header-hide-menu-on-scroll">
-
         {% if user.is_authenticated %}
         <ul class="header links">
           <li><a href="#">{{ user.get_username }}</a></li>
           <!-- SIGNOUT_BUTTON -->
-          <form class="signout-form" method="POST" action="{% url 'cp_shop_online_app:logout_page' %}">
+          <form
+            class="signout-form"
+            method="POST"
+            action="{% url 'cp_shop_online_app:logout_page' %}"
+          >
             {% csrf_token %}
             <button class="signout-btn">Sign Out</button>
           </form>
@@ -34,7 +41,9 @@
         {% else %}
         <ul class="header links">
           <li><a href="{% url 'cp_shop_online_app:login_page' %}">Login</a></li>
-          <li><a href="{% url 'cp_shop_online_app:register_page' %}">Register</a></li>
+          <li>
+            <a href="{% url 'cp_shop_online_app:register_page' %}">Register</a>
+          </li>
         </ul>
         {% endif %}
       </div>
@@ -60,7 +69,9 @@
             <p style="margin: 0px;">Category</p>
           </button>
           <div class="category-header-dropdown-content">
-            <a href="{% url 'cp_shop_online_app:all_notebook_product_page' %}">Notebook</a>
+            <a href="{% url 'cp_shop_online_app:all_notebook_product_page' %}"
+              >Notebook</a
+            >
             <!-- <a href="#">Smartphone</a>
             <a href="#">Tablet</a> -->
           </div>
@@ -81,9 +92,7 @@
   </header>
 
   <body>
-    {% block content %}
-    {{ block.super }}
-    {% endblock %}
+    {% block content %} {{ block.super }} {% endblock %}
   </body>
 
   <footer>
