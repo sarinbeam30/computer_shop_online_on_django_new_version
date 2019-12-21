@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django.conf import settings
+from django.shortcuts import reverse, redirect
 from django.utils.text import slugify
 
 class All_notebook_product_page(models.Model):
@@ -30,10 +32,9 @@ class All_notebook_product_page(models.Model):
     warranty = models.CharField(max_length=100, default="")
     operating_system = models.CharField(max_length=100, default="")
     
-    special_price = models.IntegerField(default=0)
+    special_price = models.IntegerField(default=0, blank=True)
     normal_price = models.IntegerField(default=0)
     save_price = models.IntegerField(default=0)
-
 
     add_time = models.DateTimeField(auto_now_add=True)
 
@@ -44,6 +45,5 @@ class All_notebook_product_page(models.Model):
         self.slug = 'products/' + slugify(self.product_detail) + '/'
         # print("TEST" + self.slug)
         super(All_notebook_product_page, self).save(*args, **kwargs)
-
-
+    
 

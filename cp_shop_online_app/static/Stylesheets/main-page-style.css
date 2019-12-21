@@ -634,6 +634,7 @@ body {
 /* ---------------------------- Add_to_cart_button --------------------------- */
 .card > .owl-item > .add-to-cart-button {
   width: 200px;
+  color: #000;
 }
 
 .card > .owl-item > .add-to-cart-button button {

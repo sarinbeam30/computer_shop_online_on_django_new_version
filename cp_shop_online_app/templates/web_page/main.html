@@ -151,13 +151,20 @@
         
         <h5 class="price-product">
           <span class="thai-bath-sign">&#3647;</span>
+          {% if new_product.special_price %}
+          {{ new_product.special_price|intcomma }}
+          {% else %}
           {{ new_product.normal_price|intcomma }}
+          {% endif %}
         </h5>
 
         <div class="add-to-cart-button">
-          <button><i class="fas fa-shopping-cart" >
-              <span style="margin-left: 10px;">ADD TO CART</span>
+          <button>
+            <a href="{{ new_product.get_add_to_cart_url }}" style="color: black;">
+              <i class="fas fa-shopping-cart" >
+                <span style="margin-left: 10px;">ADD TO CART</span>
               </i>
+            </a>
           </button>
         </div>
         

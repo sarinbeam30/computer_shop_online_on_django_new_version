@@ -43,15 +43,27 @@
         <h6 style="font-weight: lighter; float: left; color: gray;">
           {{ product.brand }}
         </h6>
-        <!-- <h6 style="font-weight: lighter; float: right; color: gray;">
-          SKU W26601105WTHW10_3280_BK_W
-        </h6> -->
+        
         <br />
         <br />
+
+        {% if product.special_price %}
+        <div class="discount">
+          <h2 class="special-price" style="float: left;">
+            <span class="thai-bath-sign">&#3647;</span>
+            {{ product.special_price|intcomma }}
+          </h2>
+          <h2 class="normal-price" style="float: left; padding: 8px 0 0 10px;">
+            ฿ {{ product.normal_price|intcomma }}
+          </h2>
+        </div>
+        {% else %}
         <h2 class="product-price" style="float: left; margin-left: -28px;">
           <span class="thai-bath-sign">&#3647;</span>
           {{ product.normal_price|intcomma }}
         </h2>
+        {% endif %}
+
         <h4
           class="product-available"
           style="float: right; color: green; margin-right: -150px;"

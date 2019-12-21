@@ -9,22 +9,21 @@ from django.contrib.auth.decorators import login_required
 from .forms import Register_Form, Login_Form
 
 
+
 def all_notebook_product_page(request):
-    all_notebook_product_page = All_notebook_product_page.objects.all()
     product_count = All_notebook_product_page.objects.count()
-    context = {'all_notebook_product_page': all_notebook_product_page, 'product_count': product_count}
+    context = {'all_notebook_product_page': All_notebook_product_page.objects.all(), 'product_count': product_count}
     return render(request, 'web_page/all-notebook-product-page.html', context)
 
 def main_page(request):
-    all_notebook_product_page = All_notebook_product_page.objects.all()
     golden_product =  All_notebook_product_page.objects.all()[:3]
-    context = {'all_notebook_product_page': all_notebook_product_page, 'golden_product':golden_product}
+    context = {'all_notebook_product_page': All_notebook_product_page.objects.all(), 'golden_product':golden_product}
     return render(request, 'web_page/main.html', context)
 
 def promotion_page(request):
-    all_notebook_product_page = All_notebook_product_page.objects.all()
-    product_count = All_notebook_product_page.objects.count()
-    context = {'all_notebook_product_page': all_notebook_product_page, 'product_count': product_count}
+    all_notebook_product_page = All_notebook_product_page.objects.exclude(special_price=0)
+    product_count = All_notebook_product_page.objects.exclude(special_price=0).count()
+    context = {'all_notebook_product_page': all_notebook_product_page,'product_count': product_count}
     return render(request, 'web_page/promotion-page.html', context)
 
 def product_detail_page(request,slug):
@@ -75,6 +74,10 @@ def logout_page(request):
         logout(request)
         # print('LOGOUT LEAW NA : ', request)
         return redirect('cp_shop_online_app:main_page')
+
+#CART-FUNCTION
+
+
     
 
 

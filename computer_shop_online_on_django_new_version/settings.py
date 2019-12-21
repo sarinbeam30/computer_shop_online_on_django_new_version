@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'cp_shop_online_app',
     'django.contrib.humanize',
     
+    
 ]
 
 MIDDLEWARE = [

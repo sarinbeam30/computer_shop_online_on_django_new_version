@@ -187,6 +187,19 @@ input[type=number]::-webkit-outer-spin-button {
   background-color: #ead9dc;
 }
 
+/* ---------------------------- SPECIAL_PRICE --------------------------- */
+.discount{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.discount .normal-price {
+  text-decoration: line-through;
+  color: red;
+  font-size: large;
+}
+
 /* ---------------------------- specification-container --------------------------- */
 h1#Recommended {
   margin: 0 0 0 23px;

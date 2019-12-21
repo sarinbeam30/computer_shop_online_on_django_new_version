@@ -2,6 +2,10 @@ from django.urls import path
 from django.contrib import admin
 from . import views
 
+# from .views import(
+#     add_to_cart
+# )
+
 app_name = 'cp_shop_online_app'
 urlpatterns = [
     path('', views.main_page, name='main_page'),
@@ -14,4 +18,8 @@ urlpatterns = [
     path('products/<slug:slug>/', views.product_detail_page, name='product_detail_page'),
     path('promotion_page/products/<slug:slug>/', views.product_detail_page, name='product_detail_page'),
     path('all_notebook_product_page/products/<slug:slug>/', views.product_detail_page, name='product_detail_page'),
+
+    
+    #CART_FUNCTION 
+    # path('add-to-cart/<slug:slug>/', add_to_cart, name='add-to-cart'),
 ]

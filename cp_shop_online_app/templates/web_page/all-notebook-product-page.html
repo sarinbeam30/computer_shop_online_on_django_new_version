@@ -244,7 +244,14 @@
                             </div>
                             <div class="product-item-price-box">
                                 <span class="item-price-box-row-1">
-                                    <span class="normal-price">฿{{ all_notebook_product.normal_price }}</span>
+                                    <span class="normal-price">
+                                        <span class="thai-bath-sign">&#3647;</span>
+                                        {% if all_notebook_product.special_price %}
+                                        {{ all_notebook_product.special_price|intcomma }}
+                                        {% else %}
+                                        {{ all_notebook_product.normal_price|intcomma }}
+                                        {% endif %}
+                                    </span>
                                 </span>
                             </div>
 
