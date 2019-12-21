@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import sys
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -58,7 +59,8 @@ ROOT_URLCONF = 'computer_shop_online_on_django_new_version.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        # 'DIRS': ['templates'],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -126,3 +128,12 @@ STATIC_URL = '/static/'
 # IMAGE_SETTING
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+#BRAINTREE
+if (len(sys.argv) >= 2 and sys.argv[1] == 'runserver'):
+    BRAINTREE_PRODUCTION = False
+else:
+    BRAINTREE_PRODUCTION = True
+    RAINTREE_MERCHANT_ID = "vj3225n36nzjb39v"
+    BRAINTREE_PUBLIC_KEY = "d55x9s5gzjgm5jsm"
+    BRAINTREE_PRIVATE_KEY = "0cc3596d806ab5881e491d64fc1c01ac"

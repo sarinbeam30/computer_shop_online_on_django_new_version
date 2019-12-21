@@ -160,7 +160,8 @@
 
         <div class="add-to-cart-button">
           <button>
-            <a href="{{ new_product.get_add_to_cart_url }}" style="color: black;">
+              <!-- {% url 'cp_shop_online_app:add_to_cart' new_product.id % -->
+            <a href="#" style="color: black;">
               <i class="fas fa-shopping-cart" >
                 <span style="margin-left: 10px;">ADD TO CART</span>
               </i>
@@ -173,4 +174,4 @@
     {% endfor %}  
   </div>
 {{ block.super }}
- {% endblock %} 
+{% endblock %} 

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from django.http import HttpResponse
 from .models import All_notebook_product_page
 from django.shortcuts import get_object_or_404
@@ -7,6 +7,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from .forms import Register_Form, Login_Form
+
 
 
 
@@ -75,8 +76,31 @@ def logout_page(request):
         # print('LOGOUT LEAW NA : ', request)
         return redirect('cp_shop_online_app:main_page')
 
-#CART-FUNCTION
+#SEARCH
+from django.views.generic import ListView
+from .models import All_notebook_product_page
+from django.db.models import Q, Count
 
+class SearchResultsView(ListView):
+    model = All_notebook_product_page
+    template_name = 'web_page/search-results-page.html'
+    
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        object_list = All_notebook_product_page.objects.filter(
+            Q(brand__icontains=query)
+        )
+        return object_list
+    
+    def count_queryset(self):
+        count = Count(All_notebook_product_page.objects.filter(
+            Q(brand__icontains=query)
+        ))
+        return count
+
+    
+
+    
 
     
 

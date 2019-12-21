@@ -71,8 +71,8 @@
         </div>
 
         <div class="search-container right">
-          <form action="#new-arrival">
-            <input type="text" placeholder="Search..." name="search" />
+          <form action="{% url 'cp_shop_online_app:search_result' %}" method="get">
+            <input type="text" placeholder="Search..." name="q" />
             <button type="submit"><i class="fa fa-search"></i></button>
           </form>
         </div>

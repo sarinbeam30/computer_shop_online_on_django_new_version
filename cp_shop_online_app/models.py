@@ -15,6 +15,7 @@ class All_notebook_product_page(models.Model):
 
 
     product_detail = models.CharField(max_length=200, default="")
+    product_id = models.IntegerField(default=0, null=False)
     slug = models.SlugField(unique=True, null=False)
     product_description = models.TextField(max_length=500)
     brand = models.CharField(max_length=100)
@@ -45,5 +46,7 @@ class All_notebook_product_page(models.Model):
         self.slug = 'products/' + slugify(self.product_detail) + '/'
         # print("TEST" + self.slug)
         super(All_notebook_product_page, self).save(*args, **kwargs)
+
+
     
 
