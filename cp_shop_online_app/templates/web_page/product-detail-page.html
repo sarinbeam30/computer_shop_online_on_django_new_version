@@ -1,0 +1,186 @@
+{% extends 'web_page/base-layout.html' %}
+{% load staticfiles %}
+{% load humanize %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'Stylesheets/product-detail-page-style.css' %}"/>
+
+<breadcrumbs class="breadcrumbs">
+  <ul class="items" style="list-style: none;">
+    <li class="item-Home">
+      <a href="{% url 'cp_shop_online_app:main_page' %}" title="main" style="text-decoration: none; color: black;">Home</a>
+    </li>
+    <li class="item-Notebook">
+      <a href="{% url 'cp_shop_online_app:all_notebook_product_page' %}" title="main" style="text-decoration: none; color: black;">Notebook</a>
+    </li>
+    <li class="item-product-detail">
+      <strong>{{ product.product_detail }}</strong>
+    </li>
+  </ul>
+</breadcrumbs>
+
+<div class="info-container">
+  <div class="row">
+
+    <!-- IMAGE -->
+    <div class="column">
+      <div>
+        <!-- <h5 style="text-align: left">DELL Laptop</h5> -->
+        <img
+          class="product-image"
+          src="{{ product.pic1.url }}"
+        />
+      </div>
+    </div>
+
+    <!-- PRODUCT-DETAIL -->
+    <div class="column">
+      <div class="notebook-info-box">
+        <h3 class="notebook-info">
+          {{ product.product_detail }}
+        </h3>
+        <hr />
+        <h6 style="font-weight: lighter; float: left; color: gray;">
+          {{ product.brand }}
+        </h6>
+        <!-- <h6 style="font-weight: lighter; float: right; color: gray;">
+          SKU W26601105WTHW10_3280_BK_W
+        </h6> -->
+        <br />
+        <br />
+        <h2 class="product-price" style="float: left; margin-left: -28px;">
+          <span class="thai-bath-sign">&#3647;</span>
+          {{ product.normal_price|intcomma }}
+        </h2>
+        <h4
+          class="product-available"
+          style="float: right; color: green; margin-right: -150px;"
+        >
+          In stock
+        </h4>
+        <br />
+        <br />
+        <br />
+        <h5 class="product-detail" style="font-weight: lighter; text-align: left;">
+          {{ product.product_description }}
+        </h5>
+
+        Qty:
+        <div class="item-quantity-and-add-to-cart-button">
+          <form>
+              <div class="value-button-item-quantity" id="decrease-item-quantity" onclick="decrease_Item_Quantity()" value="Decrease Value">-</div>
+              <input type="number" id="number-item-quantity" class="number-item-quantity" value="0" />
+              <div class="value-button-item-quantity" id="increase-item-quantity" onclick="increase_Item_Quantity()" value="Increase Value">+</div>
+          </form>
+
+          <div class="item-button">
+            <button type="submit" class="add-cart-button" style="margin-left: 10px;">
+              <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i>
+              <span>Add to Cart</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="specification-container">
+  <h2 >Specification</h2>
+  <table class="spec-container-table">
+    <tbody>
+      <tr>
+        <th>Screen size</th>
+        <td>{{ product.screen_size }}</td>
+      </tr>
+      <tr>
+        <th>Processor</th>
+        <td>{{ product.processor }}</td>
+      </tr>
+      <tr>
+        <th>Processor speed</th>
+        <td>{{ product.processor_speed }}</td>
+      </tr>
+      <tr>
+        <th>Display</th>
+        <td>{{ product.display }}</td>
+      </tr>
+      <tr>
+        <th>Memory</th>
+        <td>{{ product.memory }}</td>
+      </tr>
+      <tr>
+        <th>Storage</th>
+        <td>{{ product.storage }}</td>
+      </tr>
+      <tr>
+        <th>Graphics</th>
+        <td>{{ product.graphics }}</td>
+      </tr>
+      <tr>
+        <th>Operating System</th>
+        <td>{{ product.operating_system }}</td>
+      </tr>
+      <tr>
+        <th>Camera</th>
+        <td>{{ product.camera }}</td>
+      </tr>
+      <tr>
+        <th>Dimensions W x D x H</th>
+        <td>{{ product.dimension }}</td>
+      </tr>
+      <tr>
+        <th>Weight</th>
+        <td>{{ product.weight }}</td>
+      </tr>
+      <tr>
+        <th>Warranty</th>
+        <td>{{ product.warranty }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+
+<h1 id="Recommended">Recommended</h1>
+<hr style="border-width: 0.5px;" />
+<div class="new-arrival-container">
+
+  {% for all_notebook_product_page in all_notebook_product_page %}
+  <div class="card">
+    <div class="owl-item">
+      <a href="#"
+        ><img
+          src="{{ all_notebook_product_page.product_preview_image.url }}"
+      /></a>
+      <h5>{{ all_notebook_product_page.product_detail|truncatechars:35 }}</h5>
+      <h5 style="float: left">
+        {{ all_notebook_product_page.normal_price|intcomma }}
+      </h5>
+      <h5 style="float: right;">
+        BATH
+      </h5>
+
+      <div class="add-to-cart-button">
+        <button><i class="fas fa-shopping-cart" >
+            <span style="margin-left: 10px;">ADD TO CART</span>
+            </i>
+        </button>
+      </div>
+
+    </div>
+  </div>
+  {% endfor %}
+</div>
+<hr style="border-width: 0.5px;" />
+
+<script 
+  type="text/javascript"
+  src="{% static 'JavaScript/product-detail-page.js' %}"
+></script>
+
+{{ block.super }}
+{% endblock %}
+  

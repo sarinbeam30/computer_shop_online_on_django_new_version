@@ -1,0 +1,257 @@
+body {
+    margin-top: 120px;
+}
+
+/* ---------------------------- Breadcrumbs --------------------------- */
+
+.breadcrumbs {
+    position: relative;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.items  {
+    display: flex;
+    flex-direction: row;
+    padding-left: 23px;
+}
+
+.item-Home {
+    color: #a3a3a3;
+    cursor: pointer;
+}
+
+.item-Login::before {
+    content: " /";  
+    font-weight: bold;
+}
+
+/* ---------------------------- Block_new_customer_heading_mobile --------------------------- */
+
+.block-new-customer-heading-mobile {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: 40px;
+    margin-bottom: 30px;
+
+    line-height: 1.42857143;
+    color: #4a4a4a;
+}
+
+.block-new-customer-heading-mobile a {
+    background: 0 0;
+    border: solid 1px #0b5b96;
+    border-radius: 4px;
+    color: #0b5b96;
+    padding: 4px 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    margin-left: 10px;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    vertical-align: middle;
+}
+
+.block-new-customer-heading-mobile p {
+    margin: 5.75px 0px;
+}
+
+.login-part .login-horizontal-line-mobile {
+    color: #4a4a4a;
+    font-weight:100;
+    margin-bottom: 30px;
+}
+
+
+
+/* ---------------------------- Login-part --------------------------- */
+
+.login-part-container , .block-new-customer {
+    float: left;
+    width: 50%;
+}
+
+.login-part {
+    margin-top: 6%;
+    margin-left: 8%;
+    margin-right: 8%;
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.login-part .login-part-container form{
+    display: flex;
+    flex-direction: column;
+    /* background-color: #e02b27; */
+}
+
+.login-part .login-part-container form .label {
+    padding: 5px 0;
+    text-align: left;
+    width: 100%;
+    box-sizing: border-box;
+    float: left;
+}
+
+.login-part .login-part-container form .label::after {
+    content: '*';
+    color: #e02b27;
+    font-size: 1.2rem;
+    margin: 0 0 0 5px;
+}
+
+.login-part .login-part-container form input {
+    width: 65%;
+    height: 30px;
+    float: left;
+}
+
+.login-part .login-part-container form input[type=email], input[type=password] {
+    background: #fff;
+    background-clip: padding-box;
+    border: 1px solid #cecece;
+    border-radius: 1px;
+    font-size: 12px;
+    line-height: 1.42857143;
+    padding: 0 9px;
+    vertical-align: baseline;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+
+.block-new-customer .block-content .actions-toolbar a,
+.login-part .login-part-container .actions-toolbar a {
+    height: 40px;
+    line-height: 40px;
+    background: #000;
+    border-color: #000;
+    border-radius: 5px;
+    border: 1px solid black;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin: 0;
+    /* padding: 1% 12.1vw; */
+    padding: 10px 40px;
+    width: auto;
+
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+.login-part .login-part-container .actions-toolbar {
+    margin-bottom: 100px;
+}
+
+.login-part .login-part-container .actions-toolbar a button.sign-in-button {
+    margin-top: 30px;
+    border: none;
+    color: #fff;
+    background: transparent;
+    font-size: 1.1rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    line-height: 40px;
+    font-weight: 500;
+}
+
+/* ------------------------- Django's user_form  ------------------------------- */
+
+.login-part .login-part-container form label {
+    padding: 5px 0;
+    text-align: left;
+    width: 100%;
+    box-sizing: border-box;
+    float: left;
+
+}
+
+.login-part .login-part-container form label::after{
+    content: '*';
+    color: #e02b27;
+    font-size: medium;
+    margin-left: 4px;
+}
+
+
+.login-part .login-part-container form input {
+    padding: 0 9px;
+    margin-bottom: 20px;
+}
+
+.login-part .login-part-container form ul {
+    padding: 10px;
+    border: 1px solid #ff5050;
+    font-size: smaller;
+    max-width: 375px;
+    margin-bottom: 20px;
+    list-style: none;
+}
+
+.login-part .login-part-container form ul li {
+    color: red;
+}
+
+/* ------------------------- block-new-customer ------------------------------- */
+.block-new-customer {
+    line-height: 1.42857143;
+}
+
+.block-new-customer .block-content {
+    float: left;
+    background: #fff;
+    padding: 0px 40px 100px;
+    width: 100%;
+}
+
+.block-new-customer .block-content p {
+    color: #4a4a4a;
+    margin: 25px 0px;
+}
+
+.block-new-customer .block-content .actions-toolbar {
+    box-sizing: border-box;
+}
+
+
+/* ------------------------- Mobile_version  ------------------------------- */
+@media screen and (max-width: 770px) {
+    .login-part .block-new-customer {
+        display: none;
+    }
+
+    .login-part .login-part-container {
+        display: block;
+        width: 100%;
+    }
+
+    .login-part .login-part-container form input {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 771px) {
+    .block-new-customer-heading-mobile , 
+    .login-horizontal-line-mobile {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 374px) {
+    .block-new-customer-heading-mobile a,
+    .block-new-customer-heading-mobile p {
+        font-size: 13px;
+    }
+}
+
+
+
+
+

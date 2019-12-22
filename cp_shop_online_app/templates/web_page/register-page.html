@@ -1,0 +1,83 @@
+{% extends 'web_page/base-layout.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'Stylesheets/register-page-style.css' %}"/>
+<breadcrumbs class="breadcrumbs">
+    <ul class="items" style="list-style: none;">
+        <li class="item-Home">
+            <a href="{% url 'cp_shop_online_app:main_page' %}" title="main" style="text-decoration: none; color: black;">Home</a>
+        </li>
+        <li class="item-Signup" style="margin-left: 5px;">
+            <strong>Signup</strong>
+        </li>
+    </ul>
+</breadcrumbs>
+
+<div class="register-part">
+  <div class="left-column account-create-container">
+    <h3><span>REGISTER</span></h3>
+    <p>Welcome to Computer store</p>
+
+    <form method="POST">
+      {% csrf_token %}
+      {% for field in form %}
+        <p class="p_form">
+          {{ field.label_tag }}
+          
+          {{ field }}
+
+          {% if field.help_text %}
+            <span class="help_text">{{ field.help_text }}</span>
+          {% endif %}
+
+          {% for error in field.errors %}
+            <span class="error_condition" style="color: red">{{ error }}</span>
+          {% endfor %}
+          
+        </p>
+      {% endfor %}
+    
+
+      <div class="actions-toolbar">
+        <a>
+          <button class="create-an-account-button">Create an account</button>
+        </a>
+      </div>
+    
+    </form>
+
+      <div class="block-content-mobile-version">
+        <h4>Already A Member?</h4>
+        <a href="{% url 'cp_shop_online_app:login_page' %}" style="text-decoration: none; color: blue;">
+          <span>Log in</span>
+        </a>
+      </div>
+
+    
+  </div>
+
+  <div class="right-column block-already-customer">
+    <div class="block-content">
+      <h3>
+        <span>ALREADY A MEMBER ?</span>
+      </h3>
+      <p class="already-member-msg">
+        Customers can log in here. Get information on benefits. And special promotions before anyone. Have fun shopping for IT products online everyday
+      </p>
+      <div class="actions-toolbar">
+        <a href="{% url 'cp_shop_online_app:login_page' %}" class="login-button">
+          <span>Log in</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script
+  type="text/javascript"
+  src="{% static 'JavaScript/register-page-javascript.js' %}"
+></script>
+{{ block.super }}
+{% endblock %}
+

@@ -1,0 +1,276 @@
+{% extends 'web_page/base-layout.html' %}
+{% load staticfiles %}
+{% load humanize %}
+
+{% block content %}
+
+<!-- CSS -->
+
+<link rel="stylesheet" type="text/css" href="{% static 'Stylesheets/all-notebook-product-page-style.css' %}"/>
+<!-- <link rel="stylesheet" type="text/css" href="{% static 'Stylesheets/main-page-style.css' %}" /> -->
+
+<!-- j-QUERY -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+    var min_price, max_price;
+
+    $( function() {
+        $( "#slider-range" ).slider({
+        range: true,
+        min: 0,
+        max: 500,
+        values: [ 75, 300 ],
+        slide: function( event, ui ) {
+            $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+        //   min_price = ui.values[0];
+        //   max_price = ui.values[1];
+
+        //   console.log("MIN-PRICE_INSIDE :" + min_price);
+        //   console.log("MAX-PRICE_INSIDE :" + max_price);
+        }
+        });
+        $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+        " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+    } );
+
+</script>
+
+<script>
+    var min_price, max_price;
+
+    $( function() {
+        $( ".block-content-mobile-version > .sidenav > .collapsible-content > .left-slidecontainer > #slider-range" ).slider({
+        range: true,
+        min: 0,
+        max: 500,
+        values: [ 75, 300 ],
+        slide: function( event, ui ) {
+            $( ".block-content-mobile-version > .sidenav > .collapsible-content > .left-slidecontainer > price-amount-input" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+            min_price = ui.values[0];
+            max_price = ui.values[1];
+
+            console.log("MIN-PRICE_INSIDE :" + min_price);
+            console.log("MAX-PRICE_INSIDE :" + max_price);
+        }
+        });
+        $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+        " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+    } );
+</script>
+
+<breadcrumbs class="breadcrumbs">
+  <ul class="items" style="list-style: none;">
+      <li class="item-Home">
+      <a href="{% url 'cp_shop_online_app:main_page' %}" title="main" style="text-decoration: none; color: black;">Home</a>
+      </li>
+      <li class="item-Notebook" style="margin-left: 5px;">
+      <strong>Notebook</strong>
+      </li>
+  </ul>
+</breadcrumbs>
+
+<!-- left-navbar -->
+<div class="promotion-page-column-flex">
+    
+    <div class="sidebar-main column">
+        <div class="block-content-desktop-version">
+            <button type="button" class="sidebar-collapsible-btn">Category</button>
+            <div class="collapsible-content category">
+                <p class="category-p">
+                    <input type="radio" name="category" value="all-product">All Products <br>
+                    <input type="radio" name="category" value="new-arrival">New Arrival <br>
+                    <input type="radio" name="category" value="best-seller">Best Seller <br>
+                </p>
+            </div>
+            
+            <button type="button" class="sidebar-collapsible-btn">Price</button>
+            <div class="collapsible-content range-slider" >
+                <p class="left-slidecontainer">
+                    <!-- <input type="range" min="80" max="118900" value="1000" class="left-price-slider" id="left-price-slider-id">
+                    <p>Value : <span id="left-slider-value"></span></p> -->
+                    <label for="amount">Price range:</label>
+                    <input type="text" id="amount" class="price-amount-input" readonly style="border: 0; color: #f6931f; font-weight: bold;">
+                    <div id="slider-range"></div>
+                </p>
+            </div>
+
+            <button type="button" class="sidebar-collapsible-btn">Brand</button>
+            <div class="collapsible-content brand">
+                <p class="brand-filter-p">
+                    <li style="list-style: none; margin-bottom: 10px;"><input type="checkbox" name="brand" value="apple">Apple</li>
+                    <li style="list-style: none; margin-bottom: 10px;"><input type="checkbox" name="brand" value="dell">Dell</li>
+                    <li style="list-style: none; margin-bottom: 10px;"><input type="checkbox" name="brand" value="lenovo">Lenovo</li>
+                    <li style="list-style: none; margin-bottom: 10px;"><input type="checkbox" name="brand" value="microsoft">Microsoft</li>
+                    <li style="list-style: none; margin-bottom: 10px;"><input type="checkbox" name="brand" value="razer">Razer</li>
+                </p>
+            </div>
+
+        </div>
+        <div class="block-content-mobile-version">
+            <div class="sidenav" id="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">
+                    &times;
+                </a>
+
+                <button type="button" class="sidebar-collapsible-btn">Category</button>
+                <div class="collapsible-content category">
+                    <p class="category-p">
+                        <input type="radio" name="category" value="all-product">All Products <br>
+                        <input type="radio" name="category" value="new-arrival">New Arrival <br>
+                        <input type="radio" name="category" value="best-seller">Best Seller <br>
+                    </p>
+                </div>
+
+                <button type="button" class="sidebar-collapsible-btn">Price</button>
+                <div class="collapsible-content range-slider" >
+                    <p class="left-slidecontainer">
+                        <!-- <input type="range" min="80" max="118900" value="1000" class="left-price-slider" id="left-price-slider-id">
+                        <p>Value : <span id="left-slider-value"></span></p> -->
+                        <label for="amount">Price range:</label>
+                        <input type="text" id="amount" class="price-amount-input" readonly style="border: 0; color: #f6931f; font-weight: bold;">
+                        <div id="slider-range"></div>
+                    </p>
+                </div>
+
+                <button type="button" class="sidebar-collapsible-btn">Brand</button>
+                <div class="collapsible-content brand">
+                    <p class="brand-filter-p">
+                        <li style="list-style: none; margin-bottom: 10px;"><input type="checkbox" name="brand" value="apple">Apple</li>
+                        <li style="list-style: none; margin-bottom: 10px;"><input type="checkbox" name="brand" value="dell">Dell</li>
+                        <li style="list-style: none; margin-bottom: 10px;"><input type="checkbox" name="brand" value="lenovo">Lenovo</li>
+                        <li style="list-style: none; margin-bottom: 10px;"><input type="checkbox" name="brand" value="microsoft">Microsoft</li>
+                        <li style="list-style: none; margin-bottom: 10px;"><input type="checkbox" name="brand" value="razer">Razer</li>
+                    </p>
+                </div>
+                
+            </div>
+
+            <!-- filter-button -->
+            <div class="filter-button" onclick="openNav()" >
+                <i class="fas fa-filter"></i>
+                <span>Filter</span>
+            </div>
+
+            <!-- vertical-line -->
+            <div class="vertical-line"></div>
+            
+            <!-- position-button -->
+            <div class="position-button">
+                <i class="fas fa-sort-alpha-down"></i>
+                <span>Sort_By</span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="column-main column">
+        <div class="page-title">
+          <h1>Notebook</h1>
+        </div>
+
+        <div class="toolbar-promotion-product-list">
+          <div class="detail-item-toolbar-promotion-product-list" style="margin-top: 5px;">
+              <span>
+                Items <strong>1 - {{ product_count }}</strong> of Page <strong>1</strong>
+              </span>
+          </div>
+          <div class="sorter-toolbar-promotion-product-list">
+            <label class="sorter-label"><strong>Sort by</strong></label>
+            <div class="dropdown-sort">
+              <button onclick="dropdown_sort_button()" class="dropdown-sort-button">
+                Product Name</button>
+              <div class="dropdown-sort-content">
+                <a href="#">Best Sellers</a>
+                <a href="#">Product Name</a>
+                <a href="#">Price High - Low</a>
+                <a href="#">Price Low - High</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr style="color: #ebebeb;">
+        <div class="promotion-product-list-flexbox">
+            <ol class="list-item-product" style="list-style-type: none;">
+
+                {% for all_notebook_product in all_notebook_product_page %}
+                <!-- FIRST-PRODUCT -->
+                <li class="promotion-product-item">
+                    <div class="promotion-product-item-info">
+                        <a href="{{ all_notebook_product.slug }}">
+                            <img src="{{ all_notebook_product.product_preview_image.url }}">
+                        </a>
+                        <div class="product-item-detail">
+                            <div class="product-item-brand-name">{{ all_notebook_product.brand }}</div>
+                            <div class="product-item-model-name">
+                                <a href="{{ all_notebook_product.slug }}">
+                                    {{ all_notebook_product.product_detail|truncatechars:50 }}
+                                </a>
+                            </div>
+                            <hr style="font-weight: 300; color: #7895ab;">
+                            <div class="product-item-specification">
+                                <ul>
+                                    <li>
+                                        <strong>Brand :</strong>
+                                        <span>{{ all_notebook_product.brand }}</span>
+                                    </li>
+                                    <li>
+                                        <strong>Processor :</strong>
+                                        <span>{{ all_notebook_product.processor }}</span>
+                                    </li>
+                                    <li>
+                                        <strong>Display :</strong>
+                                        <span>{{ all_notebook_product.display }}</span>
+                                    </li>
+                                    <li>
+                                        <strong>Storage :</strong>
+                                        <span>{{ all_notebook_product.storage}}</span>
+                                    </li>
+                                    <li>
+                                        <strong>Graphics :</strong>
+                                        <span>{{ all_notebook_product.graphics }}</span>
+                                    </li>
+                                    <li>
+                                        <strong>Audio :</strong>
+                                        <span>{{ all_notebook_product.audio }}</span>
+                                    </li>
+                                    <li>
+                                        <strong>Operating System :</strong>
+                                        <span>{{ all_notebook_product.operating_system }}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="product-item-price-box">
+                                <span class="item-price-box-row-1">
+                                    <span class="normal-price">฿{{ all_notebook_product.normal_price }}</span>
+                                </span>
+                            </div>
+
+                            <div class="add-to-cart-button">
+                                <button><i class="fas fa-shopping-cart" >
+                                    <span style="margin-left: 10px;">ADD TO CART</span>
+                                    </i>
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </li>
+                {% endfor %}                    
+            </ol>
+        </div>
+
+    </div>
+
+</div>
+<script 
+  type="text/javascript" 
+  src="{% static 'JavaScript/all-notebook-product-page-javascript.js' %}"
+></script>
+
+{{ block.super }}
+{% endblock %}
+
+
